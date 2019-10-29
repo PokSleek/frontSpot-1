@@ -1,5 +1,8 @@
 import Item from '../baseComponents/Item/Item';
 
+import './article.css';
+import './article.scss';
+
 export class Article extends Item {
     constructor(data) {
         super('div');
@@ -7,9 +10,11 @@ export class Article extends Item {
 
         this.title = Item.addItem('p', 'title_default', this.element);
         this.title.setInnerText(data.title);
+        this.title.addClass('kek');
 
         this.description = Item.addItem('p', 'description_default', this.element);
         this.description.setInnerText(data.description);
+        this.description.addClass('bla');
 
         this.content = Item.addItem('p', 'content_default', this.element);
         this.content.setInnerText(data.content);
