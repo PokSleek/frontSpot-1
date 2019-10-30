@@ -1,0 +1,16 @@
+.news_creator {
+
+    display: flex;
+    flex-direction: column;
+
+    &__filters_wrapper {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    &__button {
+        align-self: center;
+        width: 30%;
+    }
+}
