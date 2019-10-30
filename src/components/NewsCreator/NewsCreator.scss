@@ -1,7 +1,12 @@
 .news_creator {
-
     display: flex;
     flex-direction: column;
+
+    &__article_container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 
     &__filters_wrapper {
         display: flex;
@@ -10,6 +15,13 @@
     }
 
     &__button {
+        padding: 5px;
+        font-size: 20px;
+        font-weight: 700;
+        color: rgb(0, 87, 131);
+        border-radius: 30px;
+        border: solid 2px rgb(0, 124, 178);
+        background: rgb(158, 222, 235);
         align-self: center;
         width: 30%;
     }

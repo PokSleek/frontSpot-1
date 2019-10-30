@@ -1,6 +1,8 @@
 import { getNews } from './api/requests/getNews';
 import { NewsCreator } from './components/NewsCreator/NewsCreator';
-import { WrappedSelector } from './components/Filters/WrappedSelector/WrappedSelector';
+import { Selector } from './components/Filters/Selector/Selector';
+import { Input } from "./components/Filters/Input/Input";
+import { Wrapper } from "./components/baseComponents/Wrapper/Wrapper";
 import { newsApi } from './constants/constants';
 
 const { country, category, pageSize } = newsApi.requestParameters;
@@ -12,9 +14,10 @@ function initialize() {
 
     const filters = new NewsCreator(
         [
-            new WrappedSelector(country, 'country', 'Country'),
-            new WrappedSelector(category, 'category', 'Category'),
-            new WrappedSelector(pageSize, 'pageSize', 'Page size')
+            new Wrapper(new Input('q', 'Search')),
+            new Wrapper(new Selector(country, 'country', 'Country')),
+            new Wrapper(new Selector(category, 'category', 'Category')),
+            new Wrapper(new Selector(pageSize, 'pageSize', 'Page size')),
         ],
         getNews);
     filters.mount(root);
