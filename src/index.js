@@ -1,21 +1,23 @@
-import { getNews } from './api/requests/getNews'
-import { Article } from './components/Article/Ariticle'
+import { getNews } from './api/requests/getNews';
+import { NewsCreator } from './components/NewsCreator/NewsCreator';
+import { WrappedSelector } from './components/Filters/WrappedSelector/WrappedSelector';
+import { newsApi } from './constants/constants';
 
-async function initialize() {
+const { country, category, pageSize } = newsApi.requestParameters;
+
+import './reset.css';
+
+function initialize() {
     const root = document.querySelector('#root');
-    const fragment = document.createElement('div');
 
-    // getNews().then(data => data.forEach(item => {
-    //     const article = new Article(item);
-    //     article.mount(fragment);
-    // })).then(() => root.appendChild(fragment));
-
-    const data = await getNews();
-    data.forEach(item => {
-        const article = new Article(item);
-        article.mount(fragment);
-    });
-    root.appendChild(fragment)
+    const filters = new NewsCreator(
+        [
+            new WrappedSelector(country, 'country', 'Country'),
+            new WrappedSelector(category, 'category', 'Category'),
+            new WrappedSelector(pageSize, 'pageSize', 'Page size')
+        ],
+        getNews);
+    filters.mount(root);
 }
 
 document.addEventListener('DOMContentLoaded', initialize);

@@ -1,41 +1,48 @@
 import Item from '../baseComponents/Item/Item';
 
-import './article.css';
-import './article.scss';
+import './Article.scss';
+
+const blockName = 'article';
 
 export class Article extends Item {
-    constructor(data) {
+    constructor(data = {}) {
         super('div');
+        this.addClass(blockName);
+
         this.data = data;
 
-        this.title = Item.addItem('p', 'title_default', this.element);
+        this.upperRow = Item.addItem('div', `${blockName}__upper_row`, this.element);
+        this.lowerRow = Item.addItem('div', `${blockName}__lower_row`, this.element);
+        this.footer = Item.addItem('div', `${blockName}__footer`, this.element);
+
+
+        this.title = Item.addItem('p', `${blockName}__title`, this.upperRow.element);
         this.title.setInnerText(data.title);
-        this.title.addClass('kek');
 
-        this.description = Item.addItem('p', 'description_default', this.element);
-        this.description.setInnerText(data.description);
-        this.description.addClass('bla');
-
-        this.content = Item.addItem('p', 'content_default', this.element);
-        this.content.setInnerText(data.content);
-
-        this.publishedAt = Item.addItem('p', 'publishedAt_default', this.element);
-        this.publishedAt.setInnerText(data.publishedAt);
-
-        this.author = Item.addItem('p', 'author_default', this.element);
-        this.author.setInnerText(data.author);        
-
-        this.source = Item.addItem('p', 'source_default', this.element);
+        this.source = Item.addItem('p', `${blockName}__source`, this.upperRow.element);
         this.source.setInnerText(data.source.name);
 
-        this.url = Item.addItem('p', 'url_default', this.element);
+        this.image = Item.addItem('img', `${blockName}__image`, this.upperRow.element);
+        this.image.element.src = data.urlToImage;
+
+
+
+        this.description = Item.addItem('p', `${blockName}__description`, this.lowerRow.element);
+        this.description.setInnerText(data.description);
+
+        this.content = Item.addItem('p', `${blockName}__content`, this.lowerRow.element);
+        this.content.setInnerText(data.content);
+
+
+
+        this.author = Item.addItem('p', `${blockName}__footer__author`, this.footer.element);
+        this.author.setInnerText(data.author);        
+
+        this.publishedAt = Item.addItem('p', `${blockName}__footer__published_at`, this.footer.element);
+        this.publishedAt.setInnerText(data.publishedAt);
+
+        this.url = Item.addItem('a', `${blockName}__footer__url`, this.footer.element);
         this.url.setInnerText(data.url);
-
-        this.urlToImage = Item.addItem('p', 'urlToImage_default', this.element);
-        this.urlToImage.setInnerText(data.urlToImage);
-    }
-
-    generate() {
-
+        this.url.element.href = data.url;
     }
 }
