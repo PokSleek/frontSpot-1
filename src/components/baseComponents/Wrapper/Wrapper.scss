@@ -1,0 +1,14 @@
+.wrapper {
+  margin: 20px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+
+  &__description {
+    color: rgb(0, 87, 131);
+    font-weight: 700;
+    align-self: center;
+    padding: 2px;
+    border-bottom: solid 2px rgb(0, 124, 178);
+  }
+}

@@ -1,25 +1,20 @@
 import Item from '../../baseComponents/Item/Item';
 
-import './WrappedSelector.scss';
+import './Selector.scss';
 
-const blockName = 'wrapped_selector'
+const blockName = 'selector';
 
-export class WrappedSelector extends Item {
+export class Selector extends Item {
     constructor(options = [], fieldName = '', description = fieldName) {
         super('select');
         this.addClass(blockName);
 
-        this.wrapper = new Item('div');
-        this.wrapper.addClass(`${blockName}__wrapper`);
-
-        this.description = Item.addItem('p', `${blockName}__description`, this.wrapper.element);
-        this.description.setInnerText(description);
+        this.description = description;
         
         this.element.name = fieldName;
-
         this.fieldName = fieldName;
-        this.optionsValues = options;
 
+        this.optionsValues = options;
         this.options = options.map(value => {
             const option = new Item('option');
             option.addClass(`${blockName}__option`);
@@ -30,6 +25,5 @@ export class WrappedSelector extends Item {
         });
 
         this.element.value = '';
-        this.mount(this.wrapper.element);
     }
 }

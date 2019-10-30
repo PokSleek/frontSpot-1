@@ -14,10 +14,9 @@ export class NewsCreator extends Item {
 
         this.filtersWrapper = Item.addItem('div', `${blockName}__filters_wrapper`, this.element);
 
-        this.filters = filters;
-        filters.forEach(filter => {
-            filter.wrapper.mount(this.filtersWrapper.element);
-        });
+        this.filters = filters.map(wrappedFilter => wrappedFilter.wrappedElement);
+        this.wrappedFilters = filters;
+        this.wrappedFilters.forEach(wrappedFilter => wrappedFilter.mount(this.filtersWrapper.element));
 
         this.button = Item.addItem('button', `${blockName}__button`, this.element);
         this.button.setInnerText('FIND');
@@ -30,7 +29,7 @@ export class NewsCreator extends Item {
         this.articleContainer.destructor();
         this.articleContainer = new Item('div');
         this.articleContainer.addClass(`${blockName}__article_container`);
-        
+
         const data = await this.getData(this.getFiltersValue());
 
         data.forEach(item => {
@@ -39,7 +38,7 @@ export class NewsCreator extends Item {
         });
 
         this.articleContainer.mount(this.element);
-    }
+    };
 
     getFiltersValue = () => this.filters.reduce((acc, filter) => 
     filter.element.value ?
