@@ -49,7 +49,6 @@ module.exports = {
         }]
     },
     devServer: {
-        contentBase: path.join(__dirname, 'layout'),
         port: 9000,
         open: true,
     },
