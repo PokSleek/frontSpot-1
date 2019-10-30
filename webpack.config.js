@@ -24,7 +24,8 @@ module.exports = {
             exclude: /node_modules/,
             loader: 'babel-loader',
             query: {
-                presets: ['@babel/preset-env']
+                presets: ['@babel/preset-env'],
+                plugins: ['transform-class-properties']
             },
         }, {
             test: /\.css?$/,
@@ -56,6 +57,6 @@ module.exports = {
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: 'style.css',
-        })
+        }),
     ],
 };

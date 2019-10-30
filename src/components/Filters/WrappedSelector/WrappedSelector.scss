@@ -1,0 +1,17 @@
+.wrapped_selector {
+    margin: 8px 4px 4px 4px;
+    padding: 2px 10px;
+
+
+    &__wrapper {
+        margin: 20px;
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    &__description {
+        align-self: center;
+    }
+}
