@@ -1,7 +1,11 @@
 import Item from '../baseComponents/Item/Item';
 import { Article } from '../Article/Ariticle';
 
+import State from '../../State';
+import { filterPath } from '../../State/paths';
+
 import './NewsCreator.scss';
+
 
 const blockName = 'news_creator'
 
@@ -12,25 +16,28 @@ export class NewsCreator extends Item {
 
         this.getData = getData;
 
-        this.filtersWrapper = Item.addItem('div', `${blockName}__filters_wrapper`, this.element);
+        this.filtersWrapper = new Item('div');
+        this.filtersWrapper.addClass(`${blockName}__filters_wrapper`);
 
-        this.filters = filters;
-        filters.forEach(filter => {
-            filter.wrapper.mount(this.filtersWrapper.element);
-        });
+        this.wrappedFilters = filters;
+        this.wrappedFilters.forEach(wrappedFilter => wrappedFilter.mount(this.filtersWrapper.element));
 
-        this.button = Item.addItem('button', `${blockName}__button`, this.element);
+        this.button = new Item('button');
+        this.button.addClass(`${blockName}__button`);
         this.button.setInnerText('FIND');
-
-        this.articleContainer = Item.addItem('div', `${blockName}__article_container`, this.element);
         this.button.subscribe('click', this.generateArticles);
+
+
+        this.filtersWrapper.mount(this.element);
+        this.button.mount(this.element);
+        this.articleContainer = Item.addItem('div', `${blockName}__article_container`, this.element);
     }
 
-     generateArticles = async () =>  {
+    generateArticles = async () => {
         this.articleContainer.destructor();
         this.articleContainer = new Item('div');
         this.articleContainer.addClass(`${blockName}__article_container`);
-        
+
         const data = await this.getData(this.getFiltersValue());
 
         data.forEach(item => {
@@ -39,13 +46,7 @@ export class NewsCreator extends Item {
         });
 
         this.articleContainer.mount(this.element);
-    }
+    };
 
-    getFiltersValue = () => this.filters.reduce((acc, filter) => 
-    filter.element.value ?
-    ({
-        ...acc,
-        [filter.fieldName]: filter.element.value,
-    }) :
-    acc, {});
+    getFiltersValue = () => State.getState(filterPath);
 }
