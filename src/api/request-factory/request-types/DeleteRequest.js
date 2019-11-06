@@ -7,10 +7,7 @@ export class DeleteRequest {
         this.url = url;
     }
 
-    makeRequest = async () => {
-        const result = await fetch(this.url, {
-            method: DELETE,
-        });
-        return result.json();
-    }
+    makeRequest = async () => await fetch(this.url, {
+        method: DELETE,
+    });
 }

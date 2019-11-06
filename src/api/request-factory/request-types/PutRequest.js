@@ -8,12 +8,9 @@ export class PutRequest {
         this.data = data;
     }
 
-    makeRequest = async () => {
-        const result = await fetch(this.url, {
-            ...requestDefaultOptions,
-            method: PUT,
-            body: JSON.stringify(this.data),
-        });
-        return result.json();
-    }
+    makeRequest = async () => await fetch(this.url, {
+        ...requestDefaultOptions,
+        method: PUT,
+        body: JSON.stringify(this.data),
+    });
 }

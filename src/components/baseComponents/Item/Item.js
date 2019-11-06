@@ -4,44 +4,44 @@ export default class Item {
         this.subs = [];
     }
 
-    static addItem(tagName, style, parent) {
+    static addItem = (tagName, style, parent) => {
         const element = new Item(tagName);
-        element.addClass(style);
-        element.mount(parent);
+        style ? element.addClass(style) : null;
+        parent ? element.mount(parent) : null;
         return element;
     }
 
-    mount(parent = document.body) {
+    mount = (parent = document.body) => {
         this.parent = parent;
         parent.appendChild(this.element);
     }
 
-    subscribe(event, func) {
+    subscribe = (event, func) => {
         this.subs.push({ event, func });
         this.element.addEventListener(event, func);
     }
 
-    unsubscribe(event, func) {
+    unsubscribe = (event, func) => {
         this.element.removeEventListener(event, func);
     }
 
-    setInnerText(text) {
+    setInnerText = text => {
         this.element.innerText = text;
     }
 
-    addInnerText(text) {
+    addInnerText = text => {
         this.element.innerText = this.element.innerText + text;
     }
 
-    addClass(...className) {
+    addClass = (...className) => {
         className.forEach(e => this.element.classList.add(e));
     }
 
-    removeClass(...className) {
+    removeClass = (...className) => {
         className.forEach(e => this.element.classList.remove(e));
     }
 
-    destructor() {
+    destructor = () => {
         this.parent.removeChild(this.element);
         this.parent = null;
 

@@ -3,8 +3,5 @@ export class GetRequest {
         this.url = url;
     }
 
-    makeRequest = async () => {
-        const result = await fetch(this.url);
-        return result.json();
-    }
+    makeRequest = async () => await fetch(this.url);
 }
