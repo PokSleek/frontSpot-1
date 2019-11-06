@@ -1,11 +1,14 @@
 import Item from '../../baseComponents/Item/Item';
 
+import State from '../../../State';
+import { filterPath } from '../../../State/paths';
+
 import './Input.scss';
 
 const blockName = 'wrapped_input';
 
 export class Input extends Item {
-    constructor(fieldName = '', description = fieldName, defaultValue = '') {
+    constructor(fieldName = 'input', description = fieldName, defaultValue = '') {
         super('input');
         this.addClass(blockName);
 
@@ -14,5 +17,17 @@ export class Input extends Item {
         this.description = description;
 
         this.element.value = defaultValue;
+
+        this.state = State.connectToField(filterPath);
+        this.subscribe('input', this.handleChange);
+    }
+
+    handleChange = () => {
+        this.state[this.fieldName] = this.element.value;
+    }
+
+    destructor = () => {
+        this.state = null;
+        super.destructor();
     }
 }

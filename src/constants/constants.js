@@ -8,7 +8,7 @@ export const newsApi = {
     },
     requestParameters: {
         country: ['ae', 'ar', 'bg', 'br', 'cu', 'cz', 'de', 'eg', 'fr', 'gb', 'gr', 'hk', 'hu', 'id', 'ie', 'il', 'in', 'it', 'jp', 'kr', 'lt', 'lv', 'ma', 'mx', 'my', 'ph', 'ru', 'tw', 'ua', 'us'],
-        category: ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'],
+        category: ['', 'business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'],
         pageSize: [9, 12, 15, 18]
     }
 };

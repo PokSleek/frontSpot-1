@@ -1,11 +1,14 @@
 import Item from '../../baseComponents/Item/Item';
 
+import State from '../../../State';
+import { filterPath } from '../../../State/paths';
+
 import './Selector.scss';
 
 const blockName = 'selector';
 
 export class Selector extends Item {
-    constructor(options = [], fieldName = '', description = fieldName) {
+    constructor(options = [], fieldName = 'selector', description = fieldName, defaultValue) {
         super('select');
         this.addClass(blockName);
 
@@ -24,6 +27,18 @@ export class Selector extends Item {
             return option;
         });
 
-        this.element.value = '';
+        this.element.value = defaultValue;
+
+        this.state = State.connectToField(filterPath);
+        this.subscribe('input', this.handleChange);
+    }
+
+    handleChange = () => {
+        this.state[this.fieldName] = this.element.value;
+    }
+
+    destructor = () => {
+        this.state = null;
+        super.destructor();
     }
 }
