@@ -4,6 +4,9 @@ const { PUT } = requests;
 
 export class PutRequest {
     constructor(url, data) {
+        this.method = PUT;
+        Object.freeze(this.method);
+
         this.url = url;
         this.data = data;
     }
