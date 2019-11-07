@@ -5,21 +5,12 @@ import { Input } from "./components/Filters/Input/Input";
 import { Wrapper } from "./components/baseComponents/Wrapper/Wrapper";
 import { newsApi, defaultQueryParams } from './constants/constants';
 
-import Item from "./components/baseComponents/Item/Item";
-
 const { country, category, pageSize } = newsApi.requestParameters;
 
 import './reset.css';
 
 function initialize() {
     const root = document.querySelector('#root');
-
-    const errorButton = new Item('button');
-    errorButton.setInnerText('SLOMAT');
-    errorButton.element.onclick = () => import('./errorHandler/errorHandler').then(module => {
-        console.log(module);
-    });
-    errorButton.mount(root);
 
     const filters = new NewsCreator(
         [
