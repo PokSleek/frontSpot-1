@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import logger from 'morgan';
 
 import { PORT } from './config/server';
-import newsRout from './routes/news';
+import newsRoute from './routes/news';
 
 const app = express();
 
@@ -11,14 +11,24 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger('dev'));
 
-app.use('/news', newsRout);
+app.use('/news', newsRoute);
 
-app.get('/', (req, res) => {
-    res.status(200).json({
-        message: 'Welcome to Poks project',
-    });
+
+app.use((req, res, next) => {
+  const error = new Error('Content not found');
+  error.status = 404;
+  next(error);
+});
+
+app.use((error, req, res, next) => {
+  res.status(error.status || 500).json({
+    error: {
+      status: error.status,
+      message: error.message,
+    }
+  });
 });
 
 app.listen(PORT, () => {
-    console.log(`Our server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
