@@ -1,9 +1,12 @@
 import mongoose from 'mongoose';
 
-import { RegExp } from './constants';
-
 const UserSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
+    nickname: {
+        type: String,
+        required: true,
+        unique: true,
+    },
     name: {
         type: String,
         required: true,
@@ -11,13 +14,11 @@ const UserSchema = mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique: true,
-        match: RegExp.email,
     },
     password: {
         type: String,
-        require: true
+        required: true
     },
 });
 
-module.exports = mongoose.model('User', UserSchema);
+export const User = mongoose.model('User', UserSchema);
