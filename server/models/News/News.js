@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const newsSchema = mongoose.Schema({
+const NewsSchema = mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   id: String,
   category: String,
@@ -11,4 +11,4 @@ const newsSchema = mongoose.Schema({
   url: String,
 });
 
-export const News = mongoose.model('News', newsSchema);
+export const News = mongoose.model('News', NewsSchema);

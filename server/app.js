@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger('dev'));
 
-app.use('/news', newsRoute);
+app.use('/News', newsRoute);
 
 
 app.use((req, res, next) => {
