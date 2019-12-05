@@ -2,19 +2,19 @@ import express from 'express';
 
 import {
     getNews,
-    getNewById,
-    postNew,
-    patchNewById,
-    deleteNew
-} from '../controllers/news/news'
+    getNewsById,
+    postNews,
+    patchNewsById,
+    deleteNewsById
+} from '../controllers/news'
 
 
 const router = express.Router();
 
 router.get('/', getNews);
-router.post('/', postNew);
-router.get('/:newsId', getNewById);
-router.patch('/:newsId', patchNewById);
-router.delete('/:newsId', deleteNew);
+router.post('/', postNews);
+router.get('/:newsId', getNewsById);
+router.patch('/:newsId', patchNewsById);
+router.delete('/:newsId', deleteNewsById);
 
 export default router;

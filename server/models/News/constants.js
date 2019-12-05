@@ -1,4 +1,4 @@
-export const requiredNewsFields = {
+export const newsSchema = {
     id: 'string',
     category: 'string',
     country: 'string',
