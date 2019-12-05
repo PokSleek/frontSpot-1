@@ -1,5 +1,4 @@
-{
-  "sources": [
+ [
     {
       "id": "abc-news",
       "name": "ABC News",
@@ -1171,4 +1170,3 @@
       "country": "is"
     }
   ]
-}
