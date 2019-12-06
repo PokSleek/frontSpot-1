@@ -5,7 +5,7 @@ const LocalStrategy = passportLocal.Strategy;
 
 import { User } from '../../models/User/User';
 
-export const setPassport = passport => {
+export const setPassportLocal = passport => {
     passport.use(
         new LocalStrategy({ usernameField: 'nickname' }, (nickname, password, done) => {
             User

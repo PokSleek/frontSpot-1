@@ -305,6 +305,26 @@
 							"response": []
 						},
 						{
+							"name": "GetLogin",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:7000/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "7000",
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "GetLoginPage",
 							"request": {
 								"method": "GET",
@@ -319,98 +339,6 @@
 									"path": [
 										"auth",
 										"login"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "PostLogin",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n\t\"nickname\": \"Pok\",\n\t\"name\": \"Rok\",\n\t\"email\": \"anime@blat.com\",\n\t\"password\": \"123456\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:7000/auth/login",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "7000",
-									"path": [
-										"auth",
-										"login"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Registry",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n\t\"data\": {\n\t\t\"nickname\": \"Pok\",\n\t\t\"name\": \"Rok\",\n\t\t\"email\": \"anime@blat.com\",\n\t\t\"password\": \"123456\"\n\t}\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:7000/auth/registry",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "7000",
-									"path": [
-										"auth",
-										"registry"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Logout",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:7000/auth/logout",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "7000",
-									"path": [
-										"auth",
-										"logout"
 									]
 								}
 							},
