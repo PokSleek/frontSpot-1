@@ -6,11 +6,11 @@ import passport from 'passport';
 import fbRouter from './fbAuth';
 import { getLogin, postLogin, postRegistry, logout } from '../controllers/User/User'
 
-import { setPassport } from '../controllers/Auth/Auth';
+import { setPassportLocal } from '../controllers/Auth/Auth';
 
 const router = express.Router();
 
-setPassport(passport);
+setPassportLocal(passport);
 
 router.use(session({
     secret: 'secret',
